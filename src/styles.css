@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  h1 {
+    margin-top: 20px;
+  }
+  
+  table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 80%;
+  }
+  
+  th, td {
+    padding: 10px;
+  }
+  
+  .event input[type="text"], 
+  .event input[type="date"] {
+    text-align: center;
+  }
+  
+  .event__edit-btn,
+  .event__del-btn {
+    cursor: pointer;
+  }
+  
+  .event__edit-btn,
+  .event__del-btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  .event__edit-btn:hover,
+  .event__del-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .new-event-form {
+    margin-bottom: 20px;
+  }
+  
+  #add-event-btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  #add-event-btn:hover {
+    background-color: #45a049;
+  }
+  
+.event-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .event-table th,
+  .event-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .event-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .event-table input {
+    width: calc(100% - 10px); /* Consider padding */
+    padding: 5px;
+    box-sizing: border-box;
+    border: none; 
+    outline: none; 
+  }
+  
+  .event-table input:read-only {
+    border: 1px solid transparent;
+  }
+  
+  .event-table .event__edit-btn,
+  .event-table .event__del-btn {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+  }
+  
+  .event-table .event__edit-btn:hover,
+  .event-table .event__del-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .event-table .event__edit-btn.submit-btn {
+    background-color: #28a745;
+  }
+  
+  .event-table .event__edit-btn.submit-btn:hover {
+    background-color: #218838;
+  }
+  
