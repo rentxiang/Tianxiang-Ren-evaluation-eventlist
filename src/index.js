@@ -65,7 +65,6 @@ class EventsView {
     this.eventList.appendChild(this.createEventElement(newEvent));
   }
 
-
   createEventElement(event) {
     const eventElement = document.createElement("tr");
     eventElement.classList.add("event");
@@ -74,30 +73,30 @@ class EventsView {
     <th scope="row"> <input class="event_name-input" type="text" value="${event.eventName}" readonly/></th>
     <td><input class="event_start-date" type="date" value="${event.startDate}" readonly/></td>
     <td><input class="event_end-date" type="date" value="${event.endDate}" readonly/></td>
-    <td><button class="event__edit-btn">Edit</button></td>
-    <td><button class="event__del-btn">Delete</button></td>
+    <td><button class="event__edit-btn"><svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="EditIcon" aria-label="fontSize small"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"></path></svg>Edit</button></td>
+    <td><button class="event__del-btn"><svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DeleteIcon" aria-label="fontSize small"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path></svg>Delete</button></td>
     `;
     const editBtn = eventElement.querySelector(".event__edit-btn");
 
     editBtn.addEventListener("click", async () => {
       if (editBtn.textContent === "Edit") {
-        editBtn.textContent = "Submit";
+        editBtn.textContent = "Save ";
         const inputs = eventElement.querySelectorAll("input");
         inputs.forEach((input) => input.removeAttribute("readonly"));
       } else {
-          const eventNameInput = eventElement.querySelector('.event_name-input');
-          const startDateInput = eventElement.querySelector('.event_start-date');
-          const endDateInput = eventElement.querySelector('.event_end-date');
-          const updatedEvent = {
-            eventName: eventNameInput.value,
-            startDate: startDateInput.value,
-            endDate: endDateInput.value
-          };
-          await eventsAPIs.updateEvent(event.id, updatedEvent);
-          this.model.updateEvent(event.id, updatedEvent);
-          editBtn.textContent = "Edit";
-          const inputs = eventElement.querySelectorAll("input");
-          inputs.forEach((input) => input.setAttribute("readonly"));
+        const eventNameInput = eventElement.querySelector(".event_name-input");
+        const startDateInput = eventElement.querySelector(".event_start-date");
+        const endDateInput = eventElement.querySelector(".event_end-date");
+        const updatedEvent = {
+          eventName: eventNameInput.value,
+          startDate: startDateInput.value,
+          endDate: endDateInput.value,
+        };
+        await eventsAPIs.updateEvent(event.id, updatedEvent);
+        this.model.updateEvent(event.id, updatedEvent);
+        editBtn.textContent = "Edit";
+        const inputs = eventElement.querySelectorAll("input");
+        inputs.forEach((input) => input.setAttribute("readonly"));
       }
     });
 
@@ -200,7 +199,7 @@ class EventsController {
     this.view.newEventForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       const newEvent = { eventName: "", startDate: "", endDate: "" };
-      const createdEvent = await eventsAPIs.addEvent(newEvent); 
+      const createdEvent = await eventsAPIs.addEvent(newEvent);
       this.model.addEvent(createdEvent);
       this.view.renderNewEvent(createdEvent);
       this.view.clearInput();
